@@ -1,61 +1,62 @@
-#set page(margin: 3.17cm, numbering: "1")
-#set par(first-line-indent: 1.8em, justify: true)
+#set page(
+  margin: (top: 1in + 20pt + 12pt + 25pt, bottom: 1in + 20pt + 12pt + 25pt, left: 1in + 31pt, right: 1in + 31pt),
+  numbering: "1",
+  paper: "a4",
+)
+
+#set par(leading: 0.6em, first-line-indent: 1.6em, justify: true)
 #set text(font: "New Computer Modern", size: 12pt)
 #show raw: set text(font: "New Computer Modern Mono")
-#show par: set block(spacing: 0.55em)
+#show par: set block(spacing: 0.6em)
 #show heading: set block(above: 1.4em, below: 1em)
+#set par(linebreaks: auto)
 #set heading(numbering: "1.1")
 #show figure.caption: it => {
   set align(left)
   it
 }
+#align(center + horizon)[ #line(
+    length: 100%,
+    stroke: 1pt,
+  )
+  #v(5mm - 0.6em)
 
-#page("a4")[
-  #align(center)[ #line(
-      length: 100%,
-      stroke: 1pt,
-    )
-    #v(5mm)
-    #text(smallcaps[UM-SJTU Joint Institute], size: 1.2em)
-    #par("")
-    #par("")
-    #text(smallcaps[Physics Laboratory], size: 1.2em)
+  #text(smallcaps[UM-SJTU Joint Institute], size: 14.4pt)
+  #par(text("", size: 14.4pt))
+  #text(smallcaps[Physics Laboratory], size: 14.4pt)
 
-    #text("(Vp141)", size: 1.2em)
+  #text("(Vp141)")
 
-    #line(
-      length: 100%,
-      stroke: 1pt,
-    )
-    #v(4cm)
-    #text(smallcaps[Laboratory Report], size: 1.2em)
-    #par("")
-    #text(smallcaps[Excercise 0], size: 1.2em)
-    #par("")
-    #text(smallcaps[Measurement of the Acceleration Due to Gravity], size: 1.2em)]
+  #line(
+    length: 100%,
+    stroke: 1pt,
+  )
+  #v(4cm - 0.6em)
+  #text(smallcaps[Laboratory Report], size: 14.4pt)
+  #par(text("", size: 14.4pt))
+  #text(smallcaps[Excercise 0], size: 14.4pt)
+  #par(text("", size: 14.4pt))
+  #text(smallcaps[Measurement of the Acceleration Due to Gravity], size: 14.4pt)]
 
-  #v(7cm)
-  #table(
-    columns: 3,
-    align: (col, row) => (left, left, left).at(col),
-    inset: 6pt,
-    stroke: none,
-    [Name: Jane Doe], [ID:12345678], [Group:0],
-    [Name\(partner): Alice], [ID:12345676], [Group:0],
-    [Date: 2024-09-24], [], [],
-  )]
-
+#v(7cm)
+#table(
+  rows: (0.4em) * 3,
+  columns: 3,
+  stroke: none,
+  [Name: Jane Doe ], [ID:12345678], [Group:0],
+  [Name\(partner): Alice ], [ID:12345676], [Group:0],
+  [Date: 2024-09-24], [], [],
+)
+#align(right)[#text("[rev4.1]", size: 10pt)]
+#pagebreak()
 
 = Introduction
 <introduction>
-#text(
-  fill: blue,
-  "This part should include a brief description of the experiment: its objectives, underlying physical model and phenomena, and equations that you will use in your calculations. It may be a bit longer than that below, but you should not simply copy the lab manual or quote long passages from textbooks.",
-)
+#set text(fill: blue);
+This part should include a brief description of the experiment: its objectives, underlying physical model and phenomena, and equations that you will use in your calculations. It may be a bit longer than that below, but you should not simply copy the lab manual or quote long passages from textbooks.
+#set text(fill: black);
 
-
-The objective of the experiment was to find the value of the acceleration due to gravity, based on measurements of the period of a simple physical pendulum
-and the dependence of the period on the length of the pendulum.
+The objective of the experiment was to find the value of the acceleration due to gravity, based on measurements of the period of a simple physical pendulum and the dependence of the period on the length of the pendulum.
 
 A simple pendulum consists of a point mass m suspended on a mass less in extensible thread with length l, placed in a uniform gravitational field characterized by acceleration g. If a simple pendulum is displaced from the equilibrium position by a small angle $alpha$, it may be approximately treated as a harmonic oscillator, and the solution of its equation motion is a periodic function of time (cosine) with the period.
 #math.equation(numbering:"(1)", block: true)[
@@ -69,8 +70,7 @@ acceleration due to gravity as
 <experimental-setup>
 #text(
   fill: blue,
-  "A sketch and a description of the measurement setup should be simple, understandable and — first of all — conform to the setup used in the experiment.
-	The information about measurement instruments used (type, class, measurement range, precision, etc.) should be given here.",
+  "A sketch and a description of the measurement setup should be simple, understandable and — first of all — conform to the setup used in the experiment. The information about measurement instruments used (type, class, measurement range, precision, etc.) should be given here.",
 )
 
 
@@ -82,7 +82,8 @@ diagram of the experimental setup is presented in Figure
 #link(<img_setup>)[1].
 
 #figure(
-  [#box(image("setup.png"))],
+  placement: auto,
+  [#image("setup.png")],
   caption: [
     Experimental setup.
   ],
@@ -109,8 +110,7 @@ The length of the thread can be adjusted
 <measurements>
 #text(
   fill: blue,
-  "This part should describe the measurement procedure (it can be also merged	with the previous section into a single section). This is also the section, where
-	any comments/observations regarding the measurements should be made. These include, but are not limited to: abnormal functioning of measurement devices, instability of readings, etc.
+  "This part should describe the measurement procedure (it can be also merged	with the previous section into a single section). This is also the section, where any comments/observations regarding the measurements should be made. These include, but are not limited to: abnormal functioning of measurement devices, instability of readings, etc.
 ",
 )
 == Measurements of the period of oscillations
@@ -166,14 +166,7 @@ presented in Table 2 \(columns 1 through 3).
 <results>
 #text(
   fill: blue,
-  "In this section the results of your measurements should be presented. Usually
-	tables and graphs are the best ways to present the results. The values of all
-	physical quantities (both: measured and calculated based on the measurements)
-	must be expressed using the appropriate SI units.
-	This section should also include calculations with all intermediate steps (in
-	case of repeated calculations, one sample calculation is enough). If any values
-	are calculated by data analysis software (e.g. Origin, QtiPlot, R), it should be
-	clearly indicated.",
+  "In this section the results of your measurements should be presented. Usually tables and graphs are the best ways to present the results. The values of all physical quantities (both: measured and calculated based on the measurements) must be expressed using the appropriate SI units. This section should also include calculations with all intermediate steps (in case of repeated calculations, one sample calculation is enough). If any values are calculated by data analysis software (e.g. Origin, QtiPlot, R), it should be clearly indicated.",
 )
 
 == Measurements of the period of oscillations
@@ -239,8 +232,8 @@ separately \(e.g. in a calliper measurement).
 
 #pagebreak()
 
-
-#heading(numbering: none, "A Datasheet")
+#counter(heading).update(0)
+#heading(numbering: "A", "Datasheet")
 <datasheet>
 #text(fill: blue, "
 Please remember to attach the original data sheet signed by your instructor.")
