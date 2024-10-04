@@ -10,11 +10,26 @@
 #show par: set block(spacing: 0.6em)
 #show heading: set block(above: 1.4em, below: 1em)
 #set par(linebreaks: auto)
-#set heading(numbering: "1.1")
-#show figure.caption: it => {
-  set align(left)
-  it
-}
+#set heading(numbering: "1.1  ")
+#set math.equation(numbering: "(1)", block: true, supplement: [Eq.])
+#set figure(placement: auto)
+#set table(
+align: center,
+columns: 5,
+inset: 6pt,
+stroke: 0.5pt,
+)
+#show figure: it => box(width:100%)[
+	#align(center)[#it.body]
+  #let size = measure(it.caption).width
+  #let available-size = 8.3in - 2in - 62pt
+	#v(if it.has("gap") {it.gap} else {0.5em})
+	#set align(if (size>available-size) {left} else {center})
+	#set par(justify: true)
+	#it.caption
+  #v(1em)
+]
+
 #align(center + horizon)[ #line(
     length: 100%,
     stroke: 1pt,
@@ -25,7 +40,7 @@
   #par(text("", size: 14.4pt))
   #text(smallcaps[Physics Laboratory], size: 14.4pt)
 
-  #text("(Vp141)")
+  #text("(PHYS1410J)")
 
   #line(
     length: 100%,
@@ -38,16 +53,16 @@
   #par(text("", size: 14.4pt))
   #text(smallcaps[Measurement of the Acceleration Due to Gravity], size: 14.4pt)]
 
-#v(7cm)
+#v(8.5cm)
 #table(
   rows: (0.4em) * 3,
   columns: 3,
   stroke: none,
+  align: left,
   [Name: Jane Doe ], [ID:12345678], [Group:0],
-  [Name\(partner): Alice ], [ID:12345676], [Group:0],
-  [Date: 2024-09-24], [], [],
+  [Date: #datetime.today().display()], [], [],
 )
-#align(right)[#text("[rev4.1]", size: 10pt)]
+#align(right)[#text("[rev4.1]", size: 10pt)] // comment it out
 #pagebreak()
 
 = Introduction
@@ -59,12 +74,12 @@ This part should include a brief description of the experiment: its objectives, 
 The objective of the experiment was to find the value of the acceleration due to gravity, based on measurements of the period of a simple physical pendulum and the dependence of the period on the length of the pendulum.
 
 A simple pendulum consists of a point mass m suspended on a mass less in extensible thread with length l, placed in a uniform gravitational field characterized by acceleration g. If a simple pendulum is displaced from the equilibrium position by a small angle $alpha$, it may be approximately treated as a harmonic oscillator, and the solution of its equation motion is a periodic function of time (cosine) with the period.
-#math.equation(numbering:"(1)", block: true)[
+#math.equation[
 $ T eq 2 pi sqrt(l / g) $] Hence, by measuring the period T and the
 length of l a pendulum it is possible to find the value of the
 acceleration due to gravity as
 
-#math.equation(numbering: "(1)", block: true)[$ g eq frac(4 pi^2 l, T^2) $]
+#math.equation[$ g eq frac(4 pi^2 l, T^2) $]
 
 = Experimental setup
 <experimental-setup>
@@ -78,12 +93,11 @@ The pendulum used in the experiment is a metal ball attached to a fine
 light thread of adjustable length. The thread is suspended on a solid
 bar attached to the wall. The measurement system consists of an
 optoelectronic sensor OS connected to a digital timer MCR–21. The
-diagram of the experimental setup is presented in Figure
-#link(<img_setup>)[1].
+diagram of the experimental setup is presented in @img_setup.
 
 #figure(
   placement: auto,
-  [#image("setup.png")],
+  image("setup.png"),
   caption: [
     Experimental setup.
   ],
@@ -120,7 +134,7 @@ of the equilibrium was able to trigger a signal. After the digital timer
 was reset, the pendulum was displaced from the equilibrium position and
 released. The reading on the timer was recorded. The above measurement
 of the period of 3 oscillations was repeated ten times and the obtained
-data is presented in Table #link(<tb_measurement>)[\[1]].
+data is presented in @tb_measurement.
 
 Then, the length of the thread was measured by measuring the distance
 between the suspension point and the center of the ball. Because of the
@@ -129,16 +143,11 @@ approximately, the uncertainty of this measurement is much larger than
 the maximum uncertainty of the measurement tape.
 
 The period of oscillations was measured for different lengths of the
-pendulum \(cf. Table #link(<tb_measurement>)[\[1]]).
+pendulum \(cf. Table @tb_measurement\).
 
-#align(start)[
   #figure(
     caption: [ Data for the dependence of the oscillation period on the length of the pendulum.],
-    kind: table,
-  )[#align(start)[#table(
-        align: center,
-        columns: 5,
-        inset: 6pt,
+    table(
         stroke: none,
         [$M e a s u r e m e n t$],
         table.vline(start: 0),
@@ -152,8 +161,8 @@ pendulum \(cf. Table #link(<tb_measurement>)[\[1]]).
         table.hline(start: 0),
         [1], [0.500], [1.38], [1.90], [0.03],
         [2], [0.700], [1.68], [2.82], [0.03],
-      )]
-  ]]<tb_measurement>
+      )
+  )<tb_measurement>
 == Relation between the period of oscillations and the pendulum length
 <relation-between-the-period-of-oscillations-and-the-pendulum-length>
 The measurements of the period of oscillations were analogous to those
@@ -173,7 +182,7 @@ presented in Table 2 \(columns 1 through 3).
 <measurements-of-the-period-of-oscillations>
 The period of oscillations was measured in the procedure described in
 section #link(<sec_measurement>)[3.1] and the average value was
-calculated based on the results presented in Table #link(<tb_measurement>)[\[1]]
+calculated based on the results presented in @tb_measurement
 as
 
 $ T^(‾) eq 1 / 10 sum_(i eq 1)^10 T_i eq 2.21 plus.minus 0.02 s $
