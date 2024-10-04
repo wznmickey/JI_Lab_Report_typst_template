@@ -181,7 +181,7 @@ presented in Table 2 \(columns 1 through 3).
 == Measurements of the period of oscillations
 <measurements-of-the-period-of-oscillations>
 The period of oscillations was measured in the procedure described in
-section #link(<sec_measurement>)[3.1] and the average value was
+@sec_measurement and the average value was
 calculated based on the results presented in @tb_measurement
 as
 
