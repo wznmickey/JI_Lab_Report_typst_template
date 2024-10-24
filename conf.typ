@@ -11,10 +11,9 @@ set page(
   paper: "a4",
 )
 
-set par(leading: 0.6em, first-line-indent: 1.6em, justify: true)
+set par(leading: 0.6em, spacing: 0.6em, first-line-indent: 1.6em, justify: true)
 set text(font: "New Computer Modern", size: 12pt)
 show raw: set text(font: "New Computer Modern Mono")
-show par: set block(spacing: 0.6em)
 show heading: set block(above: 1.4em, below: 1em)
 set par(linebreaks: auto)
 set heading(numbering: "1.1  ")
@@ -41,26 +40,26 @@ align(center + horizon)[ #line(
     length: 100%,
     stroke: 1pt,
   )
-  #v(5mm - 0.6em)
+  #v(5mm)
 
   #text(smallcaps[UM-SJTU Joint Institute], size: 14.4pt)
-  #par(text("", size: 14.4pt))
+  #par(text("", size: 14.4pt-1.2em))
   #text(smallcaps[Physics Laboratory], size: 14.4pt)
 
   #text("(PHYS1410J)")
-
+  #v(5mm - 0.6em)
   #line(
     length: 100%,
     stroke: 1pt,
   )
   #v(4cm - 0.6em)
   #text(smallcaps[Laboratory Report], size: 14.4pt)
-  #par(text("", size: 14.4pt))
+  #par(text("", size: 14.4pt-1.2em))
   #text(smallcaps("Excercise " + str(lab-number)), size: 14.4pt)
-  #par(text("", size: 14.4pt))
+  #par(text("", size: 14.4pt-1.2em))
   #text(smallcaps(title), size: 14.4pt)]
 
-v(9.4cm)
+v(9.5cm)
 table(
   rows: (0.4em) * 3,
   columns: 2,
@@ -73,3 +72,4 @@ table(
 pagebreak()
 doc
 }
+
