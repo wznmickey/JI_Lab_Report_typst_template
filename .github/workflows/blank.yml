@@ -4,6 +4,10 @@ on: push
 jobs:
   build_typst_documents:
     runs-on: ubuntu-latest
+    permissions:
+      # Give the default GITHUB_TOKEN write permission to commit and push the
+      # added or changed files to the repository.
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -17,3 +21,4 @@ jobs:
           name: PDFs
           path: |
             report.pdf
+      - uses: stefanzweifel/git-auto-commit-action@v5
