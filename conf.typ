@@ -17,6 +17,7 @@ show raw: set text(font: "New Computer Modern Mono")
 show heading: set block(above: 1.4em, below: 1em)
 set par(linebreaks: auto)
 set heading(numbering: "1.1  ")
+show math.equation: set block(above: 1em, below: 0.8em)
 set math.equation(numbering: "(1)", block: true, supplement: [Eq.])
 set figure(placement: auto)
 set table(
@@ -26,6 +27,7 @@ inset: 6pt,
 stroke: 0.5pt,
 )
 show figure: it => box(width:100%)[
+  #v(1em)
 	#align(center)[#it.body]
   #let size = measure(it.caption).width
   #let available-size = 8.3in - 2in - 62pt
