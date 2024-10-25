@@ -16,7 +16,7 @@ jobs:
         with:
           source_file: report.typ
       - name: Upload PDF file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: PDFs
           path: |
