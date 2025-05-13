@@ -106,6 +106,9 @@ pendulum \(cf. @tb_measurement\).
         [2], [0.700], [1.68], [2.82], [0.03],
       )
   )<tb_measurement>
+
+// Note for Typst: You can use `tablem` package for tables in markdown format, `tblr` for high-level formatting and `rexllent` for xlsx-typst conversion. csv-typst conversion is supported originally in typst, feel free to use it if you want.
+
 == Relation between the period of oscillations and the pendulum length
 <relation-between-the-period-of-oscillations-and-the-pendulum-length>
 The measurements of the period of oscillations were analogous to those
